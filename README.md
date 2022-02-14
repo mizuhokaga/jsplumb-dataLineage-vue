@@ -2,10 +2,12 @@
 
 ### 效果图
 
-![Image text](https://github.com/mizuhokaga/jsplumb-dataLineage-vue/blob/main/src/assets/sample.jpg)
+![图片](https://github.com/mizuhokaga/jsplumb-dataLineage-vue/blob/main/src/assets/sample.png)
+
 
 
 ### 安装依赖
+
 ```
 npm install
 ```
@@ -21,7 +23,6 @@ npm run serve
 3. 画布的整体平移
 4. 下载JSON
 5. 生成血缘图
-6. 
-###其他
+6. ### 其他
 - 功能详情参考文章: https://blog.csdn.net/qq_44831907/article/details/122923483
 - js版本在这里: https://github.com/mizuhokaga/jsplumb-dataLineag
