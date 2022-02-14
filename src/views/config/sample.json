@@ -1,0 +1,250 @@
+{
+    "edges": [
+        {
+            "from": {
+                "column": "name",
+                "tbName": "data2"
+
+            },
+            "to": {
+                "column": "name",
+                "tbName": "middle1"
+            }
+
+        },
+        {
+            "from": {
+                "column": "name",
+                "tbName": "data1"
+            },
+            "to": {
+                "column": "name",
+                "tbName": "middle2"
+            }
+
+        },
+        {
+            "from": {
+                "column": "age",
+                "tbName": "data1"
+            },
+            "to": {
+                "column": "age",
+                "tbName": "middle1"
+            }
+
+        },
+        {
+            "from": {
+                "column": "age",
+                "tbName": "data2"
+            },
+            "to": {
+                "column": "age",
+                "tbName": "middle2"
+            }
+
+        },
+        {
+            "from": {
+                "column": "class",
+                "tbName": "data1"
+            },
+            "to": {
+                "column": "class",
+                "tbName": "middle2"
+            }
+
+        },
+        {
+            "from": {
+                "column": "grade",
+                "tbName": "data2"
+            },
+            "to": {
+                "column": "grade",
+                "tbName": "middle2"
+            }
+
+        },
+        {
+            "from": {
+                "column": "age",
+                "tbName": "middle1"
+            },
+            "to": {
+                "column": "age",
+                "tbName": "middle3"
+            }
+         
+        },
+        {
+            "from": {
+                "column": "name",
+                "tbName": "middle2"
+            },
+            "to": {
+                "column": "name",
+                "tbName": "middle3"
+            }
+          
+        },
+        {
+            "from": {
+                "column": "class",
+                "tbName": "middle2"
+            },
+            "to": {
+                "column": "class",
+                "tbName": "middle3"
+            }
+        },
+        {
+            "from": {
+                "column": "grade",
+                "tbName": "middle2"
+            },
+            "to": {
+                "column": "grade",
+                "tbName": "middle3"
+            }
+        },
+        {
+            "from": {
+                "column": "name",
+                "tbName": "middle3"
+            },
+            "to": {
+                "column": "name",
+                "tbName": "RS"
+            }
+        },
+        {
+            "from": {
+                "column": "age",
+                "tbName": "middle3"
+            },
+            "to": {
+                "column": "age",
+                "tbName": "RS"
+            }
+        },
+        {
+            "from": {
+                "column": "grade",
+                "tbName": "middle3"
+            },
+            "to": {
+                "column": "grade",
+                "tbName": "RS"
+            }
+        },
+        {
+            "from": {
+                "column": "class",
+                "tbName": "middle3"
+            },
+            "to": {
+                "column": "class",
+                "tbName": "RS"
+            }
+        }
+    ],
+    "nodes": [{
+            "id": "data1",
+            "name": "data1",
+            "type": "Origin",
+            "columns": [{
+                "name": "age"
+            }, {
+                "name": "name"
+            }, {
+                "name": "class"
+            }],
+            "top": 135,
+            "left": 10
+        },
+        {
+            "id": "data2",
+            "name": "data2",
+            "type": "Origin",
+            "columns": [{
+                    "name": "age"
+                },
+                {
+                    "name": "name"
+                }, {
+                    "name": "grade"
+                }
+            ],
+            "top": 255,
+            "left": 50
+        },
+        {
+            "id": "middle1",
+            "name": "middle1",
+            "type": "Middle",
+            "columns": [{
+                "name": "age"
+            }, {
+                "name": "name"
+            }],
+            "top": 139,
+            "left": 233
+        },
+        {
+            "id": "middle2",
+            "name": "middle2",
+            "type": "Middle",
+            "columns": [{
+                    "name": "age"
+                }, {
+                    "name": "name"
+                },
+                {
+                    "name": "class"
+                },
+                {
+                    "name": "grade"
+                }
+            ],
+            "top": 309,
+            "left": 281
+        },
+        {
+            "id": "middle3",
+            "name": "middle3",
+            "type": "Middle",
+            "columns": [{
+                    "name": "age"
+                }, {
+                    "name": "name"
+                },
+                {
+                    "name": "class"
+                },
+                {
+                    "name": "grade"
+                }
+            ],
+            "top": 222,
+            "left": 388
+        },
+        {
+            "id": "RS",
+            "name": "RS",
+            "type": "RS",
+            "columns": [{
+                "name": "age"
+            }, {
+                "name": "name"
+            }, {
+                "name": "class"
+            }, {
+                "name": "grade"
+            }],
+            "top": 280,
+            "left": 571
+        }
+    ]
+}
