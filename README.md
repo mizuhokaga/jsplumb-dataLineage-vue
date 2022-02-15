@@ -1,5 +1,5 @@
 # jsplumb-dataLineage-vue
-
+基于Vue(Vue2)和jsPlumb的、模仿sqlFlow前端的数据血缘前端展示页面
 ### 效果图
 
 ![图片](https://github.com/mizuhokaga/jsplumb-dataLineage-vue/blob/main/src/assets/sample.png)
