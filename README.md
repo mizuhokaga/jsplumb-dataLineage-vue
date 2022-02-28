@@ -25,4 +25,4 @@ npm run serve
 5. 生成血缘图
 6. ### 其他
 - 功能详情参考文章: https://blog.csdn.net/qq_44831907/article/details/122923483
-- js版本在这里: https://github.com/mizuhokaga/jsplumb-dataLineag
+- js版本在这里: https://github.com/mizuhokaga/jsplumb-dataLineage
