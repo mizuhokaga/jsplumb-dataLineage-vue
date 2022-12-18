@@ -1,6 +1,6 @@
 {
   "name": "jsplumb-dataLineage-vue",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -12,6 +12,7 @@
     "canvas": "^2.9.0",
     "canvg": "^1.5.3",
     "core-js": "^3.6.5",
+    "element-ui": "^2.15.12",
     "html2canvas": "^1.4.1",
     "jquery": "^3.6.0",
     "jsdom": "^13.2.0",
