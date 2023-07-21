@@ -1,5 +1,5 @@
 import panzoom from "panzoom";
-
+// 封装的jsplumb的通用方法
 const comm = {
     //添加端点
     addEndpoint(elID, anchorArr) {
@@ -7,7 +7,7 @@ const comm = {
         anchorArr.forEach(anchor => {
             this.jsplumbInstance.addEndpoint(elID, {
                 anchors: anchor,
-                uuid: elID + this.minus + anchor
+                uuid: elID.concat(this.minus, anchor)
             }, this.commConfig)
         })
     },
@@ -37,11 +37,11 @@ const comm = {
     alignForLine(nodeID, position) {
         let showXLine = false, showYLine = false
         this.json.nodes.some(el => {
-            if (el.name !== nodeID && el.left == position[0]) {
+            if (el.name !== nodeID && el.left === position[0]) {
                 this.auxiliaryLinePos.x = position[0];
                 showYLine = true
             }
-            if (el.name !== nodeID && el.top == position[1]) {
+            if (el.name !== nodeID && el.top === position[1]) {
                 this.auxiliaryLinePos.y = position[1];
                 showXLine = true
             }
@@ -51,7 +51,7 @@ const comm = {
     },
     changeNodePosition(nodeID, pos) {
         this.json.nodes.some(v => {
-            if (nodeID == v.name) {
+            if (nodeID === v.name) {
                 v.left = pos[0]
                 v.top = pos[1]
                 return true
@@ -158,6 +158,8 @@ const comm = {
             })
         }
     },
+
+    //鼠标移动到连线上时候
     findActiveNode(edges, tbName, column) {
         let up = this.findUpstreamNode(edges, tbName, column)
         //up数组首个元素重复 需要跳过

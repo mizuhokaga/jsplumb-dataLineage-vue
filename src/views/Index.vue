@@ -1,15 +1,18 @@
 <template>
   <div class="app-container">
+    <!--    左边的按钮组-->
     <div class="button-wrapper">
       <div v-for="button in buttonGroup" :key="button.label">
         <div class="node" @click="click(button.type)">
-          <div class="icon"><img class="btnIcon" :src="button.icon"/></div>
+          <div class="icon"><img class="btnIcon" :src="button.icon" alt="button.label"/></div>
           {{ button.label }}
         </div>
       </div>
     </div>
+    <!--    右边的绘制区域-->
     <div id="flowWrap" ref="flowWrap" class="flow-wrapper">
       <div id="table-flow">
+        <!--        对齐辅助线-->
         <div v-show="auxiliaryLine.isShowXLine" class="auxiliary-line-x"
              :style="{width: auxiliaryLinePos.width, top:auxiliaryLinePos.y + 'px', left: auxiliaryLinePos.offsetX + 'px'}"></div>
         <div v-show="auxiliaryLine.isShowYLine" class="auxiliary-line-y"
@@ -27,10 +30,10 @@
 
 <script>
 import jsplumbModule from 'jsplumb'
-import {commConfig} from './config/jsplumbConfig'
+import commConfig from './config/jsplumbConfig'
 import buttonGroup from './config/buttonGroup'
 import buttonMethods from './methods/buttonMethods'
-import tableTypeMappingColor from "./config/tableTypeMappingColor";
+import colorFields from './config/tableTypeMappingColor'
 import comm from './methods/comm'
 import $ from 'jquery'
 import TableNode from './components/TableNode'
@@ -46,7 +49,8 @@ export default {
     return {
       jsplumbInstance: null,
       json: {
-        nodes: [], edges: []
+        nodes: [],
+        edges: []
       },
       buttonGroup: buttonGroup,
       commConfig: commConfig,
@@ -72,6 +76,7 @@ export default {
     //初始化
     init() {
       this.fixNodesPosition()
+      //nextTick 立即更新DOM
       this.$nextTick(() => {
         this.initialize()
       })
@@ -86,6 +91,7 @@ export default {
         this.jsplumbInstance.reset();
 
         this.drawing(this.anchorArr)
+
         // 会使整个jsPlumb立即重绘。
         this.jsplumbInstance.setSuspendDrawing(false, true);
         this.initPanZoom()
@@ -93,71 +99,73 @@ export default {
     },
     // 绘制
     drawing(anchorArr) {
-      if (this.json.nodes && this.json.edges) {
+      if (this.json.nodes.length !== 0 && this.json.edges.length !== 0) {
         //1 绘制节点信息
         this.json.nodes.forEach(node => {
           //使节点可拖动
           this.draggableNode(node.name)
           node.fields.forEach(field => {
-            // this.jsplumbInstance.makeSource(node.name+ "-" + field.name,this.jsplumbSourceOptions)
-            this.addEndpoint(node.name + "-" + field.name, anchorArr)
+            //表字段添加端点
+            this.addEndpoint(node.name.concat(this.minus, field.name), anchorArr)
+            //表头添加端点
+            this.addEndpoint(node.name.concat(this.minus,), anchorArr)
           })
         })
         //2 绘制节点间连线
         this.json.edges.forEach(edge => {
-          let from = edge.from.name + this.minus + edge.from.field + this.minus + "Right",
-              to = edge.to.name + this.minus + edge.to.field + this.minus + "Left"
+          let from = edge.from.name.concat(this.minus, edge.from.field, this.minus, "Right"),
+              to = edge.to.name.concat(this.minus, edge.to.field, this.minus, "Left")
           this.connectEndpoint(from, to);
-          //绑定事件 鼠标移到连线高亮关联列、线
-          this.jsplumbInstance.unbind("mouseover");
-          this.jsplumbInstance.bind("mouseover", conn => {
-            const to = conn.targetId.split(this.minus)
-            let activeNodes = this.findActiveNode(this.json.edges, to[0], to[1])
-            activeNodes.forEach(an => {
-              const full = an.tbName + this.minus + an.column
-
-              this.jsplumbInstance.getConnections({
-                source: full
-              }).map(c => {
-                c.setPaintStyle({
-                  stroke: tableTypeMappingColor["RS"].color
-                })
-              })
-              $("#" + an.tbName + "-cols")
-                  .find("#" + full)
-                  .css("background-color", tableTypeMappingColor["HighLight"].color);
-              //  const connections = this.jsplumbInstance.getAllConnections()//How stupid！
-              // connections.map(c => {
-              //   if (an.tbName === c.sourceId.split(this.minus)[0]) {
-              //     if (full === c.sourceId) {
-              //       c.setPaintStyle({
-              //         stroke: tableTypeMappingColor["RS"].color
-              //       })
-              //     }
-              //   }
-              // })
-            })
-          });
+          //绑定事件 鼠标移到连线高亮关联列、线 ，暂时注释
+          // this.jsplumbInstance.unbind("mouseover");
+          // this.jsplumbInstance.bind("mouseover", conn => {
+          //   const to = conn.targetId.split(this.minus)
+          //   let activeNodes = this.findActiveNode(this.json.edges, to[0], to[1])
+          //   activeNodes.forEach(an => {
+          //     const full = an.tbName + this.minus + an.column
+          //
+          //     this.jsplumbInstance.getConnections({
+          //       source: full
+          //     }).map(c => {
+          //       c.setPaintStyle({
+          //         stroke: colorFields["RS"].color
+          //       })
+          //     })
+          //     $("#" + an.tbName + "-cols")
+          //         .find("#" + full)
+          //         .css("background-color", colorFields["HighLight"].color);
+          //     //  const connections = this.jsplumbInstance.getAllConnections()//How stupid！
+          //     // connections.map(c => {
+          //     //   if (an.tbName === c.sourceId.split(this.minus)[0]) {
+          //     //     if (full === c.sourceId) {
+          //     //       c.setPaintStyle({
+          //     //         stroke: colorFields["RS"].color
+          //     //       })
+          //     //     }
+          //     //   }
+          //     // })
+          //   })
+          // });
           //鼠标移走后恢复
-          this.jsplumbInstance.unbind('mouseout');
-          this.jsplumbInstance.bind("mouseout", conn => {
-            const to = conn.targetId.split(this.minus)
-            let activeNodes = this.findActiveNode(this.json.edges, to[0], to[1])
-            //将所有相关字段恢复默认显示
-            activeNodes.forEach(an => {
-              const full = an.tbName + this.minus + an.column
-              this.jsplumbInstance.getConnections({
-                source: full
-              }).map(c => {
-                c.setPaintStyle({
-                  stroke: tableTypeMappingColor["Union"].color
-                })
-              })
-              $("#" + an.tbName + "-cols")
-                  .find("#" + full)
-                  .css("background-color", tableTypeMappingColor["NormalLight"].color);
-            })
-          });
+          // this.jsplumbInstance.unbind('mouseout');
+          // this.jsplumbInstance.bind("mouseout", conn => {
+          //   const to = conn.targetId.split(this.minus)
+          //   let activeNodes = this.findActiveNode(this.json.edges, to[0], to[1])
+          //   //将所有相关字段恢复默认显示
+          //   activeNodes.forEach(an => {
+          //     const full = an.tbName + this.minus + an.column
+          //     this.jsplumbInstance.getConnections({
+          //       source: full
+          //     }).map(c => {
+          //       c.setPaintStyle({
+          //         stroke: colorFields["Union"].color
+          //       })
+          //     })
+          //     $("#" + an.tbName + "-cols")
+          //         .find("#" + full)
+          //         .css("background-color", colorFields["NormalLight"].color);
+          //   })
+          // });
         })
       }
     },

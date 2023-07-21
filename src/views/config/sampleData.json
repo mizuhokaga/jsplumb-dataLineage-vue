@@ -2,12 +2,12 @@
     "edges": [
         {
             "from": {
-                "field": "name",
-                "name": "data2"
+                "field": "",
+                "name": "data1"
 
             },
             "to": {
-                "field": "name",
+                "field": "",
                 "name": "middle1"
             }
 
@@ -15,7 +15,8 @@
         {
             "from": {
                 "field": "name",
-                "name": "data1"
+                "name": "data2"
+
             },
             "to": {
                 "field": "name",
@@ -26,32 +27,10 @@
         {
             "from": {
                 "field": "age",
-                "name": "data1"
-            },
-            "to": {
-                "field": "age",
-                "name": "middle1"
-            }
-
-        },
-        {
-            "from": {
-                "field": "age",
                 "name": "data2"
             },
             "to": {
                 "field": "age",
-                "name": "middle2"
-            }
-
-        },
-        {
-            "from": {
-                "field": "class",
-                "name": "data1"
-            },
-            "to": {
-                "field": "class",
                 "name": "middle2"
             }
 

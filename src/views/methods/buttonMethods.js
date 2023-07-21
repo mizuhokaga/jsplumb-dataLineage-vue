@@ -1,6 +1,6 @@
-import {GenNonDuplicateID} from "@/common/until";
-import html2canvas from "html2canvas";
-import canvg from "canvg";
+import {GenNonDuplicateID} from "@/common/until"
+import html2canvas from "html2canvas"
+import canvg from "canvg"
 
 const buttonMethods = {
     click(e) {//根据点击类型的不同分流到指定函数
@@ -58,7 +58,7 @@ const buttonMethods = {
             console.log(error);
         });
     },
-    // 将base64转换成file文件
+    // 下载图片的辅助方法：将base64转换成file文件
     base64ToFile(dataurl) {
         let arr = dataurl.split(',');
         let mime = arr[0].match(/:(.*?);/)[1];
@@ -72,7 +72,7 @@ const buttonMethods = {
             type: mime
         });
     },
-    // canvg将svg转canvas
+    //下载图片的辅助方法： canvg将svg转canvas
     svgToCanvas(element) {
         const svgElems = element.querySelectorAll('svg');
         svgElems.forEach(node => {

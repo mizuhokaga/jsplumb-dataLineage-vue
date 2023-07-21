@@ -1,14 +1,16 @@
 <template>
   <div class="table-node" :style="[setCoordinate,setColor(node.type,8620)]">
-    <div class="table-node-name" :style="setColor(node.type,0)">
+    <!--    表头：放置表名-->
+    <div :id="`${node.name}${minus}`" class="table-node-name" :style="setColor(node.type,17)">
       {{ node.name }}
     </div>
-    <div :id="`${node.name}-fields`" class="table-node-fields">
-      <!-- 表名和字段名拼接后用于绑定id与key确定节点（绘制节点和连线时用到，参见） 请保证两者的组合唯一 -->
+    <!--表域：放置表字段-->
+    <div :id="`${node.name}${minus}fields`" class="table-node-fields">
+      <!-- 表名和字段名拼接后用于jsplumb绑定id与key确定节点（绘制端点和连线时用到,参考Index.vue的drawing方法） 请保证组合而成的id唯一，否则连线失败 -->
       <div
           v-for="field in node.fields"
-          :id="`${node.name}-${field.name}`"
-          :key="`${node.name}-${field.name}`"
+          :id="`${node.name}${minus}${field.name}`"
+          :key="`${node.name}${minus}${field.name}`"
           class="field"
       >
         <span>{{ field.name }}</span>
@@ -25,21 +27,29 @@ export default {
   props: {
     node: Object,
   },
+  data() {
+    return {
+      minus: '-'
+    }
+  },
   methods: {
+    // 设置TableNode颜色：
+    // 如果是 table-node 仅设置边框，如果是table-node-name 设置背景颜色
     setColor(t, flag) {
-      for (let type in colorFields) {
-        // flag用于判断设置边框颜色或是表头颜色,8620这个数字和这种判断写法纯粹自己开心
-        if (flag >> 1 && t === type) {
-          if (t === type) {
+      for (let item in colorFields) {
+        if (t === colorFields[item].type) {
+          // 如果flag是偶数（flag=8620 魔数纯粹自己开心）
+          if ((flag & 1) === 0) {
             return {
-              border: colorFields[type].color,
+              border: colorFields[item].color,
               borderStyle: 'solid',
               borderWidth: '1px'
             }
-          }
-        } else if (flag >> 1 === 0 && t === type) {
-          return {
-            backgroundColor: colorFields[type].color
+          } else {
+            // 如果flag是奇数
+            return {
+              backgroundColor: colorFields[item].color
+            }
           }
         }
       }
@@ -66,6 +76,7 @@ export default {
   align-items: center;
   z-index: 9995;
   border-radius: 3px 3px 0 0;
+
   .table-node-name {
     height: 22px;
     line-height: 22px;
@@ -74,8 +85,10 @@ export default {
     color: white;
     font-size: 12px;
   }
+
   .table-node-fields {
     background-color: #fff;
+
     .field {
       transform: scale(.916);
       font-family: verdana, sans serif;
