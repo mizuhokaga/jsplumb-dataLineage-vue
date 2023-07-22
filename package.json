@@ -1,0 +1,25 @@
+{
+  "name": "jsplumb-dl-vue3",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "servce": "vite --port 8620",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "canvg": "^4.0.1",
+    "less": "^4.1.3",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.3",
+    "@types/vue-router": "^2.0.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "html2canvas": "^1.4.1",
+    "jsplumb": "^2.15.6",
+    "panzoom": "^9.4.3",
+    "vite": "^4.4.6"
+  }
+}

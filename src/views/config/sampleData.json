@@ -1,0 +1,234 @@
+{
+  "edges": [
+    {
+      "from": {
+        "field": "",
+        "name": "data1"
+      },
+      "to": {
+        "field": "",
+        "name": "middle1"
+      }
+    },
+    {
+      "from": {
+        "field": "name",
+        "name": "data2"
+      },
+      "to": {
+        "field": "name",
+        "name": "middle2"
+      }
+    },
+    {
+      "from": {
+        "field": "age",
+        "name": "data2"
+      },
+      "to": {
+        "field": "age",
+        "name": "middle2"
+      }
+    },
+    {
+      "from": {
+        "field": "grade",
+        "name": "data2"
+      },
+      "to": {
+        "field": "grade",
+        "name": "middle2"
+      }
+    },
+    {
+      "from": {
+        "field": "age",
+        "name": "middle1"
+      },
+      "to": {
+        "field": "age",
+        "name": "middle3"
+      }
+    },
+    {
+      "from": {
+        "field": "name",
+        "name": "middle2"
+      },
+      "to": {
+        "field": "name",
+        "name": "middle3"
+      }
+    },
+    {
+      "from": {
+        "field": "class",
+        "name": "middle2"
+      },
+      "to": {
+        "field": "class",
+        "name": "middle3"
+      }
+    },
+    {
+      "from": {
+        "field": "grade",
+        "name": "middle2"
+      },
+      "to": {
+        "field": "grade",
+        "name": "middle3"
+      }
+    },
+    {
+      "from": {
+        "field": "name",
+        "name": "middle3"
+      },
+      "to": {
+        "field": "name",
+        "name": "RS"
+      }
+    },
+    {
+      "from": {
+        "field": "age",
+        "name": "middle3"
+      },
+      "to": {
+        "field": "age",
+        "name": "RS"
+      }
+    },
+    {
+      "from": {
+        "field": "grade",
+        "name": "middle3"
+      },
+      "to": {
+        "field": "grade",
+        "name": "RS"
+      }
+    },
+    {
+      "from": {
+        "field": "class",
+        "name": "middle3"
+      },
+      "to": {
+        "field": "class",
+        "name": "RS"
+      }
+    }
+  ],
+  "nodes": [
+    {
+      "name": "data1",
+      "type": "Origin",
+      "fields": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "class"
+        }
+      ],
+      "top": 135,
+      "left": 10
+    },
+    {
+      "name": "data2",
+      "type": "Origin",
+      "fields": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "grade"
+        }
+      ],
+      "top": 255,
+      "left": 50
+    },
+    {
+      "name": "middle1",
+      "type": "Middle",
+      "fields": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "name"
+        }
+      ],
+      "top": 139,
+      "left": 233
+    },
+    {
+      "name": "middle2",
+      "type": "Middle",
+      "fields": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "class"
+        },
+        {
+          "name": "grade"
+        }
+      ],
+      "top": 309,
+      "left": 231
+    },
+    {
+      "name": "middle3",
+      "type": "Middle",
+      "fields": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "class"
+        },
+        {
+          "name": "grade"
+        }
+      ],
+      "top": 222,
+      "left": 388
+    },
+    {
+      "name": "RS",
+      "type": "RS",
+      "fields": [
+        {
+          "name": "age"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "class"
+        },
+        {
+          "name": "grade"
+        }
+      ],
+      "top": 280,
+      "left": 571
+    }
+  ]
+}
