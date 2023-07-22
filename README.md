@@ -1,8 +1,10 @@
 # jsplumb-dataLineage-vue
 
-基于Vue2和jsPlumb的、模仿sqlFlow前端的数据血缘前端展示页面
-- vue2
+基于Vue和jsPlumb的、模仿sqlFlow前端的数据血缘前端展示页面
+- [main 分支](https://github.com/mizuhokaga/jsplumb-dataLineage-vue/tree/main) 为 vue2 版本
+- [vue3 分支](https://github.com/mizuhokaga/jsplumb-dataLineage-vue/tree/vue3为vue3) 为 vue3 版本，当然由于我大会vue3所以写得很烂
 - [jsplumb2.x https://github.com/jsplumb/jsplumb](https://github.com/jsplumb/jsplumb)
+- jsplumb [中文文档参考](https://github.com/wangduanduan/jsplumb-chinese-tutorial)
 ## 1.效果
 
 ![图片](https://github.com/mizuhokaga/jsplumb-dataLineage-vue/blob/main/src/assets/sample.png)
@@ -69,5 +71,5 @@ npm run serve
 ## 4.其他
 - 功能详情参考文章: https://blog.csdn.net/qq_44831907/article/details/122923483
 - js版本在这里: https://github.com/mizuhokaga/jsplumb-dataLineage
-- 现在可以用G6的ER图编写更好
+- 现在可以用G6的[ER图](https://antv-g6.gitee.io/zh/examples/case/simpleCase#ER)编写更好
 - Vue3版本请切换分支
