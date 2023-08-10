@@ -132,7 +132,8 @@ export default {
 
     #table-flow {
       position: relative;
-      width: 100%;
+      // 调大width目的是暂时解决节点拖动到table-flow区域外时(如flow-wrapper)节点宽度自动变窄的问题
+      width: 1000%;
       height: 100%;
 
       .auxiliary-line-x {
