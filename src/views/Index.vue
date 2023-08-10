@@ -3,7 +3,7 @@
     <!--    左边的按钮组-->
     <div class="button-wrapper">
       <div v-for="button in buttonGroup" :key="button.label">
-        <div class="node" @click="click(button.type)">
+        <div class="button" @click="click(button.type)">
           <div class="icon"><img class="btnIcon" :src="button.icon" alt="button.label"/></div>
           {{ button.label }}
         </div>
@@ -196,7 +196,7 @@ export default {
       height: 40px;
     }
 
-    .node {
+    .button {
       display: flex;
       height: 40px;
       width: 80%;
@@ -237,7 +237,8 @@ export default {
 
     #table-flow {
       position: relative;
-      width: 100%;
+      // 调大width目的是暂时解决节点拖动到table-flow区域外时(如flow-wrapper)节点宽度自动变窄的问题
+      width: 1000%;
       height: 100%;
 
       .auxiliary-line-x {
