@@ -59,7 +59,8 @@ npm run serve
 ```
 浏览器访问 http://localhost:8620
 ## 3.功能：
-- 根据json渲染血缘图，每个节点可自由拖动；~~移动到连线上==高亮==相关**列和线**~~
+- 根据json渲染血缘图，每个节点可自由拖动；
+- ~~移动到连线上==高亮==相关**列和线**~~,因为失灵时不灵连线高亮暂时注释掉了
 - 画布支持缩放 （鼠标中键滚轮缩放）
 - 画布的整体无限平移
 - 导出血缘为JSON 或 PNG图片
@@ -69,7 +70,8 @@ npm run serve
 
 
 ## 4.其他
-- 功能详情参考文章: https://blog.csdn.net/qq_44831907/article/details/122923483
+- 功能详情参考文章:[【已开源】基于Vue2和jsPlumb.js的模仿sqlFlow数据血缘图的前端页面【源代码已更新】](https://blog.csdn.net/qq_44831907/article/details/122923483)
 - JS版本在这里: https://github.com/mizuhokaga/jsplumb-dataLineage
 - 现在可以用[G6的官方demoER图](https://antv-g6.gitee.io/zh/examples/case/simpleCase#ER) 编写更好
 - [Vue3版本请切换分支](https://github.com/mizuhokaga/jsplumb-dataLineage-vue/tree/vue3)
+- 后端坐标生成博文存档:[后端 绘制有向无环图(DAG图)](https://blog.csdn.net/qq_44831907/article/details/128370539)
